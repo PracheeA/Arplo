@@ -1,0 +1,120 @@
+.img-user{
+    height: 500px;
+    margin-top: 20px;
+}
+
+.mainheder{
+    font-family: 'gotham-Medium';
+    font-size: 50px;
+    color: rgba(39, 50, 109, 1);
+}
+
+.sectioncss{
+    padding: 50px;
+}
+
+.textcss{
+    font-family: 'gotham-Medium';
+    font-size: 18px;
+}
+.textcss1{
+    font-family: 'gotham-Regular';
+    font-size: 18px;
+}
+.qescss{
+    font-family: 'gotham-Bold';
+    font-size: 18px;
+}
+.hmimgcss{
+    height: 60px !important;
+    padding-right: 10px;
+}
+
+.viewcss{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.qimgcss{
+    height: 50px !important;
+    padding-right: 10px;
+}
+.faqcss{
+    height: 100px !important;
+}
+.questionimg{
+    height: 150px;
+}
+.faq{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faqtext{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 215px;
+    margin-right: 215px;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.cardcss2{
+    background-color: rgba(39, 50, 109, 1);
+}
+
+.form-control {
+    line-height: 2.5 !important;
+}
+
+.text-start{
+    font-family: 'gotham-Regular';
+    font-size: 14px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.btncolor{
+    background: rgba(255, 255, 255, 1);
+    border: none;
+    color: rgba(85, 105, 200, 1);
+    width: 113px;
+    border-radius: 15px;
+}
+
+.btnflex{
+    display: flex;
+    justify-content:end;
+    margin-top: 10px;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 1); /* Change the color to your preferred color */
+    /* You can also add other styles as needed */
+  }
+.cardcss3{
+    background-color:rgba(85, 105, 200, 1)
+}
+
+.qcss{
+    margin-left: 100px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'gotham-Regular';
+    font-size: 20px;
+    margin-top:10px
+}
+
+
+
+.contacttxt{
+    color: rgba(255, 255, 255, 1);
+    font-family: 'gotham-Regular';
+    font-size: 25px;
+    margin-top:10px
+}
+.contactcss{
+    height: 100px !important;
+}
