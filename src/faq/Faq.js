@@ -4,6 +4,8 @@ import edit from '../assets/images/edit.svg'
 import view from '../assets/images/view.svg'
 import contactus from '../assets/images/contactus.svg'
 import faqt from '../assets/images/faqt.svg'
+import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 export default function Faq() {
   const data = [
     {
@@ -95,6 +97,27 @@ export default function Faq() {
     }
   };
 
+  const handleNameChange = (event) => {
+    const inputMessage = event.target.value;
+
+    setFirstName(inputMessage);
+
+    if (errors.firstName) {
+      const updatedErrors = { ...errors };
+
+      delete updatedErrors.firstName;
+
+      setErrors(updatedErrors);
+    }
+  };
+
+  let contactvalue = {
+    "data": {
+      "title": "",
+      "email": "",
+      "description": ""
+    },
+  }
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -102,6 +125,10 @@ export default function Faq() {
 
     if (!isEmailValid(email)) {
       validationErrors.email = "Please enter a valid email address.";
+    }
+
+    if (!firstName) {
+      validationErrors.firstName = "Please enter a name.";
     }
     if (!isMessageValid(message)) {
       validationErrors.message =
@@ -116,6 +143,38 @@ export default function Faq() {
     if (Object.keys(validationErrors).length === 0) {
       setEmail("");
       setMessage("");
+      setFirstName("")
+
+      contactvalue.data.title = firstName;
+      contactvalue.data.description = message;
+      contactvalue.data.email = email;
+
+      let config = {
+        method: "POST",
+        url: 'https://summer-scene-41622.botics.co/contactus/api/v1/create-contact-us/',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: contactvalue.data
+      }
+      axios
+        .request(config)
+        .then(response => {
+
+          toast.success('Respons saved successfully', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 2000,
+            hideProgressBar: true,
+          });
+
+        })
+        .catch(error => {
+          toast.error('Error while saving data ', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 2000,
+            hideProgressBar: true,
+          });
+        })
     }
 
 
@@ -159,11 +218,11 @@ export default function Faq() {
                     Name <span style={{ color: "rgba(255, 0, 0, 1)" }}>*</span>
                   </Form.Label>
                   <Form.Control
-                    style={{ backgroundColor: "rgba(85, 105, 200, 1)" }}
+                    style={{ backgroundColor: "rgba(85, 105, 200, 1)",color:'white' }}
                     type="text"
                     placeholder="Enter your name"
                     value={firstName}
-                    onChange={handleEmailChange}
+                    onChange={handleNameChange}
                     isInvalid={!!errors.firstName}
                   />
                   <Form.Control.Feedback type="invalid">
@@ -171,7 +230,7 @@ export default function Faq() {
                   </Form.Control.Feedback>
                 </Form.Group></Col>
               <Col md={6}>
-                <Form.Group controlId="formBasicEmail" className='pt-2'>
+                <Form.Group controlId="formBasicEmail" >
                   <Form.Label className="text-start">
                     Email <span style={{ color: "rgba(255, 0, 0, 1)" }}>*</span>
                   </Form.Label>
@@ -204,7 +263,7 @@ export default function Faq() {
                     rows={4}
                     onChange={handleMessageChange}
                     isInvalid={!!errors.message}
-                    style={{ backgroundColor: "rgba(85, 105, 200, 1)" }}
+                    style={{ backgroundColor: "rgba(85, 105, 200, 1)",color:'white' }}
                   />
                   <Form.Control.Feedback type="invalid">
                     {errors.message}

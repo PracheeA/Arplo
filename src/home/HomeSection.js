@@ -97,8 +97,6 @@ const HomeSection = () => {
     }
   };
 
-  
-
   let contactvalue = {
     "data": {
       "title": "",
